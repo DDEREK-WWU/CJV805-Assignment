@@ -1,0 +1,212 @@
+.App{
+  background-color: #111;
+
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #3d3838;
+  color: white;
+  position: fixed;
+  top: 0;
+  width:100%;
+  z-index: 1000;
+  height: 60px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  font-size: 2rem; /* Adjust the size as needed */
+  color: rgb(20, 214, 91);
+}
+
+.logo-text {
+  margin-left: 10px;
+  font-size: 1.5rem; /* Adjust the size as needed */
+  color: white;
+}
+.logo-link{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.nav {
+  display: flex;
+  align-items: center ;
+}
+
+.nav-link {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.first-logo-nav-link {
+  margin-left: 60px; /* Adjust the spacing as needed */
+}
+
+.logo-nav-link {
+  margin-left: 20px; /* Adjust the spacing as needed */
+}
+
+
+.hero-section {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.slide-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  max-width: 400px;
+}
+
+.slide-info h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.slide-info p {
+  margin: 5px 0 0;
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.featured-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.movie-list,
+.TvShows-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;  /* ✅ Ensures wrapping if items exceed width */
+  gap: 15px;
+  margin-bottom: 30px; /* ✅ Creates spacing between Movies and TV Shows */
+}
+
+.TvShows-list {
+  flex-direction: row; /* ✅ Forces TV Shows to be stacked below */
+}
+
+.movie-card,
+.TvShows-card {
+  width: 150px;
+  text-align: center;
+}
+
+.movie-poster,
+.TvShows-poster {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.movie-poster:hover,
+.TvShows-poster:hover {
+  transform: scale(1.15);
+}
+
+
+
+.footer {
+  background-color: #3d3838;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column; /* ✅ Ensures footer sections stack */
+  align-items: center;
+  font-size: 14px;
+}
+
+/* ✅ First Row: Navigation & Social Media */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  padding-bottom: 8px; /* ✅ Adds spacing below */
+  border-bottom: 1px solid #333; /* ✅ Subtle separator */
+}
+
+.footer-nav {
+  flex-grow: 1;
+}
+
+.footer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.footer-menu li {
+  display: inline;
+}
+
+.footer-menu a {
+  text-decoration: none;
+  color: #bbb;
+  font-size: 12px;
+  transition: color 0.3s ease;
+}
+
+.footer-menu a:hover {
+  color: #fff;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials a {
+  color: #bbb;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #fff;
+}
+
+/* ✅ Second Row: Footer Info */
+.footer-bottom {
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  padding-top: 8px; /* ✅ Adds spacing above */
+}
+
+.footer-text, .footer-disclaimer {
+  margin: 3px 0; /* ✅ Reduces spacing */
+  color: #888;
+}
