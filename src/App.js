@@ -1,6 +1,7 @@
 
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {useEffect} from 'react';
 import MediaProvider from './context/MediaContext';
 import HomePage from './pages/HomePage';
 import MediaListPage from './pages/MediaListPage';
@@ -13,6 +14,11 @@ import { ThemeProviderWrapper } from './context/ThemeContext';
 
 
 function App() {
+
+  useEffect(() => {
+    document.title = "NetHuDu";
+  }, []);
+
   return (
     <ThemeProviderWrapper>
       <Router>

@@ -96,64 +96,30 @@
 }
 
 .featured-section {
-  padding: 20px;
+  padding: 30px;
   text-align: center;
+
 }
-
-.movie-list,
-.TvShows-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;  /* ✅ Ensures wrapping if items exceed width */
-  gap: 15px;
-  margin-bottom: 30px; /* ✅ Creates spacing between Movies and TV Shows */
-}
-
-.TvShows-list {
-  flex-direction: row; /* ✅ Forces TV Shows to be stacked below */
-}
-
-.movie-card,
-.TvShows-card {
-  width: 150px;
-  text-align: center;
-}
-
-.movie-poster,
-.TvShows-poster {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.movie-poster:hover,
-.TvShows-poster:hover {
-  transform: scale(1.15);
-}
-
-
 
 .footer {
   background-color: #3d3838;
   color: #fff;
   padding: 10px 20px;
   display: flex;
-  flex-direction: column; /* ✅ Ensures footer sections stack */
+  flex-direction: column; /*  Ensures footer sections stack */
   align-items: center;
   font-size: 14px;
 }
 
-/* ✅ First Row: Navigation & Social Media */
+/* First Row: Navigation & Social Media */
 .footer-top {
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 1200px;
   align-items: center;
-  padding-bottom: 8px; /* ✅ Adds spacing below */
-  border-bottom: 1px solid #333; /* ✅ Subtle separator */
+  padding-bottom: 8px; /*  Adds spacing below */
+  border-bottom: 1px solid #333; /*  Subtle separator */
 }
 
 .footer-nav {
@@ -198,7 +164,7 @@
   color: #fff;
 }
 
-/* ✅ Second Row: Footer Info */
+/* Second Row: Footer Info */
 .footer-bottom {
   text-align: center;
   width: 100%;

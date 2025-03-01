@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import Header from "../components/header";
 import Footer from "../components/Footer";
 import {MediaContext} from "../context/MediaContext";
@@ -26,6 +26,9 @@ const MediaListPage = () => {
     const handlePageChange = (event, value) => {
         setPage(value);
       };
+      useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [page]);
     return (
         <div>
             <Header />
@@ -34,23 +37,25 @@ const MediaListPage = () => {
           🎬 Movies & TV Shows Listing
         </Typography>
 
-        {/* ✅ Grid Layout */}
+        {/* Grid Layout */}
+        <div className="featured-section">
         <Grid2 container spacing={3} justifyContent="center">
           {displayedMedia.map((media) => (
-            <Grid2 item key={media.id} xs={12} sm={6} md={4} lg={3}>
+            <Grid2 item key={media.id} xs={3}>
               <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                 <Card sx={{ maxWidth: 250, margin: "auto", transition: "0.3s", "&:hover": { transform: "scale(1.05)" } }}>
                   <CardMedia component="img" height="350" image={media.poster} alt={media.title} />
                   <CardContent>
-                    <Typography variant="h6" align="center">{media.title}</Typography>
+                    <Typography variant="caption" align="center">{media.title}</Typography>
                   </CardContent>
                 </Card>
               </Link>
             </Grid2>
           ))}
         </Grid2>
+        </div>
 
-        {/* ✅ Pagination */}
+        {/* Pagination */}
         <Pagination
           count={Math.ceil(allMedia.length / itemsPerPage)}
           page={page}

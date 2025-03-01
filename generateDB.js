@@ -83,7 +83,7 @@ const fetchTvShows = async (genreMap) => {
         genre: tvShow.genre_ids.map(id => genreMap[id] || "Unknown").join(', '), // ✅ Map genre names
         rating: tvShow.vote_average,
         overview: tvShow.overview,
-        buy: getRandomPrice(15, 25)-0.01,
+                buy: getRandomPrice(15, 25)-0.01,
         rent: getRandomPrice(1, 5)-0.01,
         poster: tvShow.poster_path 
           ? `https://image.tmdb.org/t/p/w500${tvShow.poster_path}` 

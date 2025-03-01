@@ -7,12 +7,12 @@ export const ThemeContext = createContext();
 export const ThemeProviderWrapper = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
 
-  // ✅ Toggle between light & dark mode
+  //  Toggle between light & dark mode
   const toggleTheme = () => {
     setDarkMode((prevMode) => !prevMode);
   };
 
-  // ✅ MUI Theme Configuration
+  //  MUI Theme Configuration
   const theme = useMemo(
     () =>
       createTheme({
@@ -26,7 +26,7 @@ export const ThemeProviderWrapper = ({ children }) => {
   return (
     <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
       <ThemeProvider theme={theme}>
-        <CssBaseline /> {/* ✅ Resets default styles */}
+        <CssBaseline /> {/*  Resets default styles */}
         {children}
       </ThemeProvider>
     </ThemeContext.Provider>

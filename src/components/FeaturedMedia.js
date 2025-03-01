@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
 import { MediaContext } from '../context/MediaContext';
+import {Grid2 , Card, CardMedia, CardContent, Typography, Pagination} from "@mui/material";
+import {Link} from "react-router-dom";
+
 
 const FeaturedMedia = () => {
     const { movies = [] , tvShows = [] } = useContext(MediaContext);
@@ -21,29 +24,35 @@ const FeaturedMedia = () => {
 
     return (
     <div className="featured-section">
-        <div className="media-category">
-          <h2>Featured Movies</h2>
-          <div className="movie-list">
-            {displayMovies.map(movie => (
-              <div key={movie.id} className="movie-card">
-                <img src={movie.poster} alt={movie.title} className="movie-poster" />
-                <p>{movie.title}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+          <Grid2 container spacing={3} justifyContent="center">
+                 {displayMovies.map((media) => (
+                   <Grid2 item key={media.id} xs={3}>
+                     <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                       <Card sx={{maxWidth: 240, margin: "auto", transition: "0.3s", "&:hover": { transform: "scale(1.05)" } }}>
+                         <CardMedia component="img" height="350" image={media.poster} alt={media.title} />
+                         <CardContent>
+                           <Typography variant="caption" align="center">{media.title}</Typography>
+                         </CardContent>
+                       </Card>
+                     </Link>
+                   </Grid2>
+                 ))}
+               </Grid2>
     
-        <div className="media-category">
-          <h2>Featured TV Shows</h2>
-          <div className="TvShows-list">
-            {displayTvShows.map(tvShow => (
-              <div key={tvShow.id} className="TvShows-card">
-                <img src={tvShow.poster} alt={tvShow.title} className="TvShows-poster" />
-                <p>{tvShow.title}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+               <Grid2 container spacing={3} justifyContent="center" sx={{marginTop: "30px"}}>
+                 {displayTvShows.map((media) => (
+                   <Grid2 item key={media.id} xs={3}>
+                     <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                       <Card sx={{maxWidth: 240, margin: "auto", transition: "0.3s", "&:hover": { transform: "scale(1.05)" } }}>
+                         <CardMedia component="img" height="350" image={media.poster} alt={media.title} />
+                         <CardContent>
+                           <Typography variant="caption" align="center">{media.title}</Typography>
+                         </CardContent>
+                       </Card>
+                     </Link>
+                   </Grid2>
+                 ))}
+               </Grid2>
       </div>
     );
 }

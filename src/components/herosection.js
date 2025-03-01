@@ -2,6 +2,7 @@ import {React, useContext} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { MediaContext } from '../context/MediaContext';
+import { Link } from 'react-router-dom';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -20,16 +21,17 @@ const HeroSection = () => {
   return (
     <div className="hero-section" style={{ width: '100%', height: '500px', position: 'relative' }}>
       <Swiper
-        modules={[Autoplay, Pagination, Navigation]} // ✅ Enable slideshow features
+        modules={[Autoplay, Pagination, Navigation]} // Enable slideshow features
         spaceBetween={50}
         slidesPerView={1}
-        autoplay={{ delay: 7000, disableOnInteraction: false }} // ✅ Slideshow effect
-        pagination={{ clickable: true }} // ✅ Adds pagination dots
-        navigation // ✅ Enables next/prev buttons
-        loop={true} // ✅ Ensures continuous looping
+        autoplay={{ delay: 7000, disableOnInteraction: false }} // Slideshow effect
+        pagination={{ clickable: true }} // Adds pagination dots
+        navigation // Enables next/prev buttons
+        loop={true} // Ensures continuous looping
       >
         {topMedia.map((media) => (
           <SwiperSlide key={media.id}>
+            <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
             <img 
               src={media.banner} 
               alt={media.title} 
@@ -39,6 +41,7 @@ const HeroSection = () => {
               <h2>{media.title}</h2>
               <p>Genre: {media.genre} | Year: {media.year} | Rating: {media.rating}</p>
             </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

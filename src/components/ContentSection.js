@@ -2,7 +2,6 @@ import React from "react";
 import { Card, CardContent, CardMedia, Typography, Grid2, Box } from "@mui/material";
 
 const ContentSection = () => {
-  // ✅ Content Data (Can be expanded)
   const contentData = [
     {
       title: "🎬 The Magic of Hollywood",
@@ -25,10 +24,10 @@ const ContentSection = () => {
   ];
 
   return (
-    <Box sx={{ padding: 4 }}>
-      <Grid2 container spacing={3} justifyContent="center">
+    <Box sx={{ padding: 3 }}>
+      <Grid2 container spacing={6} justifyContent="center">
         {contentData.map((item, index) => (
-          <Grid2 item xs={12} sm={6} md={4} key={index}>
+          <Grid2 item xs={3} key={index}>
             <Card sx={{ maxWidth: 345, boxShadow: 3 }}>
               <CardMedia component="img" height="200" image={item.image} alt={item.title} />
               <CardContent>

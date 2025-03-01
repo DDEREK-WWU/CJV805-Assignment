@@ -20,7 +20,7 @@ const MediaDetailsPage = () => {
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <Header />
 
-      {/*  Main Content Section (Expands to push Footer down) */
+      {/*  Main Content Section (Expands to push Footer down) */}
       <Box sx={{ flex: 1 }}>
         
         {/*  Banner Section */}
