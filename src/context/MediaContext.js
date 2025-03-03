@@ -10,11 +10,11 @@ const MediaProvider = ({ children }) => {
   const [tvShows, setTvShows] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/movies`)
+    fetch(`https://cjv-805-assignment-git-main-dderek-wwus-projects.vercel.app/api/movies`)
       .then(response => response.json())
       .then(data => setMovies(data));
 
-    fetch(`http://localhost:3001/tvShows`)
+    fetch(`https://cjv-805-assignment-git-main-dderek-wwus-projects.vercel.app/api/tvShows`)
       .then(response => response.json())
       .then(data => setTvShows(data));
   }, []);
