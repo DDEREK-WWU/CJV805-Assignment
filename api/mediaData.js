@@ -8,36 +8,31 @@ class MediaData {
         const movieData = require("./db.json").movies;
         const tvShowData = require("./db.json").tvShows;
 
-        return new Promise((resolve, reject) => {
-            this.movies = movieData;
-            this.tvShows = tvShowData;
+        return new Promise((resolve) => {
+            // ✅ Force `id` to always be a string
+            this.movies = movieData.map(movie => ({
+                ...movie,
+                id: String(movie.id) // Convert ID to string
+            }));
+
+            this.tvShows = tvShowData.map(tvShow => ({
+                ...tvShow,
+                id: String(tvShow.id) // Convert ID to string
+            }));
+
             resolve("Media data has been initialized.");
         });
     }
 
     getAllMovies() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             resolve(this.movies);
         });
     }
 
-    getMovieById(id) {
-        return new Promise((resolve, reject) => {
-            const movie = this.movies.find(m => m.id === parseInt(id));
-            movie ? resolve(movie) : reject("Movie not found.");
-        });
-    }
-
     getAllTVShows() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             resolve(this.tvShows);
-        });
-    }
-
-    getTVShowById(id) {
-        return new Promise((resolve, reject) => {
-            const show = this.tvShows.find(s => s.id === parseInt(id));
-            show ? resolve(show) : reject("TV show not found.");
         });
     }
 }
