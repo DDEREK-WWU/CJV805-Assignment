@@ -9,11 +9,11 @@ const MediaProvider = ({ children }) => {
   const [tvShows, setTvShows] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/movies`)
+    fetch(`http://localhost:3001/movies`)
       .then(response => response.json())
       .then(data => setMovies(data));
 
-    fetch(`http://localhost:3001/api/tvshows`)
+    fetch(`http://localhost:3001/tvshows`)
       .then(response => response.json())
       .then(data => setTvShows(data));
   }, []);
