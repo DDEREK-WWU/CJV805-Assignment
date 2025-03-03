@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { MediaContext } from '../context/MediaContext';
-import {Grid2 , Card, CardMedia, CardContent, Typography, Pagination} from "@mui/material";
+import {Grid2 , Card, CardMedia, CardContent, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 
 
@@ -24,6 +24,7 @@ const FeaturedMedia = () => {
 
     return (
     <div className="featured-section">
+      <Typography variant="h4" align="center" sx = {{marginBottom: "30px"}}>Featured Movies</Typography>
           <Grid2 container spacing={3} justifyContent="center">
                  {displayMovies.map((media) => (
                    <Grid2 item key={media.id} xs={3}>
@@ -38,7 +39,7 @@ const FeaturedMedia = () => {
                    </Grid2>
                  ))}
                </Grid2>
-    
+      <Typography variant="h4" align="center" sx={{marginTop: "30px"}}>Featured TvShows</Typography>
                <Grid2 container spacing={3} justifyContent="center" sx={{marginTop: "30px"}}>
                  {displayTvShows.map((media) => (
                    <Grid2 item key={media.id} xs={3}>
