@@ -7,17 +7,17 @@ const app = express();
 const mediaData = new MediaData();
 const PORT = process.env.PORT || 3001;
 
-// ✅ Enable CORS for frontend (React at http://localhost:3000)
+// Enable CORS for frontend (React at http://localhost:3000)
 app.use(cors());
 
-// ✅ Middleware to initialize data before handling requests
+// Middleware to initialize data before handling requests
 app.use((req, res, next) => {
     mediaData.initialize()
         .then(() => next())
         .catch(err => console.log(err));
 });
 
-// ✅ API routes
+// API routes
 app.get("/api/movies", (req, res) => {
     mediaData.getAllMovies()
         .then(movies => res.json(movies))

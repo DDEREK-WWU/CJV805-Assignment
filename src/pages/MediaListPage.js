@@ -41,7 +41,7 @@ const MediaListPage = () => {
         <div className="featured-section">
         <Grid container spacing={2}justifyContent="center">
           {displayedMedia.map((media) => (
-            <Grid item xs = {2} key={media.id} >
+            <Grid item xs={12} sm={6} md={4} lg={2} key={media.id} >
               <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                 <Card sx={{ maxWidth: 250, margin: "auto", transition: "0.3s", "&:hover": { transform: "scale(1.05)" } }}>
                   <CardMedia component="img" height="350" image={media.poster} alt={media.title} />

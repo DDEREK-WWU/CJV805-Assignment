@@ -1,4 +1,4 @@
-import {React, useContext} from 'react';
+import { React, useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { MediaContext } from '../context/MediaContext';
@@ -17,30 +17,29 @@ const HeroSection = () => {
 
   const topMedia = [...topMovies, ...topTvShows];
 
-
   return (
-    <div className="hero-section" style={{ width: '100%', height: '500px', position: 'relative' }}>
+    <div className="hero-section">
       <Swiper
-        modules={[Autoplay, Pagination, Navigation]} // Enable slideshow features
+        modules={[Autoplay, Pagination, Navigation]} 
         spaceBetween={50}
         slidesPerView={1}
-        autoplay={{ delay: 7000, disableOnInteraction: false }} // Slideshow effect
-        pagination={{ clickable: true }} // Adds pagination dots
-        navigation // Enables next/prev buttons
-        loop={true} // Ensures continuous looping
+        autoplay={{ delay: 7000, disableOnInteraction: false }} 
+        pagination={{ clickable: true }} 
+        navigation 
+        loop={true} 
       >
         {topMedia.map((media) => (
           <SwiperSlide key={media.id}>
             <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
-            <img 
-              src={media.banner} 
-              alt={media.title} 
-              style={{ width: "100%", height: "500px", objectFit: "cover" }} 
-            />
-             <div className="slide-info">
-              <h2>{media.title}</h2>
-              <p>Genre: {media.genre} | Year: {media.year} | Rating: {media.rating}</p>
-            </div>
+              <img 
+                src={media.banner} 
+                alt={media.title} 
+                className="hero-image" 
+              />
+              <div className="slide-info">
+                <h2>{media.title}</h2>
+                <p>Genre: {media.genre} | Year: {media.year} | Rating: {media.rating}</p>
+              </div>
             </Link>
           </SwiperSlide>
         ))}
