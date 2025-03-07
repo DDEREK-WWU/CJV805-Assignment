@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from "react";
 import Header from "../components/header";
 import Footer from "../components/Footer";
 import {MediaContext} from "../context/MediaContext";
-import {Grid2 , Card, CardMedia, CardContent, Typography, Pagination} from "@mui/material";
+import {Grid , Card, CardMedia, CardContent, Typography, Pagination} from "@mui/material";
 import {Link} from "react-router-dom";
 
 
@@ -39,9 +39,9 @@ const MediaListPage = () => {
 
         {/* Grid Layout */}
         <div className="featured-section">
-        <Grid2 container spacing={3} justifyContent="center">
+        <Grid container spacing={2}justifyContent="center">
           {displayedMedia.map((media) => (
-            <Grid2 item key={media.id} xs={3}>
+            <Grid item xs = {2} key={media.id} >
               <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                 <Card sx={{ maxWidth: 250, margin: "auto", transition: "0.3s", "&:hover": { transform: "scale(1.05)" } }}>
                   <CardMedia component="img" height="350" image={media.poster} alt={media.title} />
@@ -50,9 +50,9 @@ const MediaListPage = () => {
                   </CardContent>
                 </Card>
               </Link>
-            </Grid2>
+            </Grid>
           ))}
-        </Grid2>
+        </Grid>
         </div>
 
         {/* Pagination */}

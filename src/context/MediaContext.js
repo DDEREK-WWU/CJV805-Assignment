@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const MediaContext = createContext();
 
-// ✅ Dynamically set API URL
+// Dynamically set API URL
 const API_BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3001/api"
@@ -23,15 +23,15 @@ const MediaProvider = ({ children }) => {
         return response.json();
       })
       .then(data => {
-        console.log("✅ Fetched Movies:", data);
+        console.log("Fetched Movies:", data);
         setMovies(data);
       })
       .catch(error => {
-        console.error("❌ Error fetching movies:", error);
+        console.error("Error fetching movies:", error);
         setError(error.message);
       });
 
-    console.log("📡 Fetching TV Shows from:", `${API_BASE_URL}/tvshows`);
+    console.log("Fetching TV Shows from:", `${API_BASE_URL}/tvshows`);
     fetch(`${API_BASE_URL}/tvshows`)
       .then(response => {
         if (!response.ok) {
@@ -40,18 +40,15 @@ const MediaProvider = ({ children }) => {
         return response.json();
       })
       .then(data => {
-        console.log("✅ Fetched TV Shows:", data);
+        console.log("Fetched TV Shows:", data);
         setTvShows(data);
       })
       .catch(error => {
-        console.error("❌ Error fetching TV Shows:", error);
+        console.error("Error fetching TV Shows:", error);
         setError(error.message);
       });
   }, []);
 
-  if (error) {
-    return <div>❌ Error loading data: {error}</div>;
-  }
 
   return (
     <MediaContext.Provider value={{ movies, tvShows }}>

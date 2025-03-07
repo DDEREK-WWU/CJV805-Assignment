@@ -6,7 +6,7 @@ import Header from "../components/header";
 import Footer from "../components/Footer";
 
 const MediaDetailsPage = () => {
-  const { movies, tvShows } = useContext(MediaContext);
+  const { movies = [], tvShows = [] } = useContext(MediaContext);
   const { id } = useParams();
   
   //  Find the media item by matching its ID

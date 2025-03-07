@@ -23,7 +23,7 @@ const fetchGenres = async (url) => {
 
     return genreMap;
   } catch (error) {
-    console.error("❌ Error fetching genres:", error);
+    console.error("Error fetching genres:", error);
     return {};
   }
 };
@@ -37,7 +37,7 @@ const fetchMovies = async (genreMap) => {
   let allMovies = [];
 
   for (let page = 1; page <= PAGES_TO_FETCH; page++) {
-    console.log(`📥 Fetching movies from page ${page}...`);
+    console.log(` Fetching movies from page ${page}...`);
     const response = await fetch(`${MOVIE_URL}&page=${page}`);
     const data = await response.json();
     
@@ -46,7 +46,7 @@ const fetchMovies = async (genreMap) => {
         id: movie.id,
         title: movie.title,
         year: movie.release_date ? new Date(movie.release_date).getFullYear() : 'Unknown',
-        genre: movie.genre_ids.map(id => genreMap[id] || "Unknown").join(', '), // ✅ Map genre names
+        genre: movie.genre_ids.map(id => genreMap[id] || "Unknown").join(', '), // Map genre names
         rating: movie.vote_average,
         overview: movie.overview,
         buy: getRandomPrice(15, 25)-0.01,
@@ -71,7 +71,7 @@ const fetchTvShows = async (genreMap) => {
   let allTvShows = [];
 
   for (let page = 1; page <= PAGES_TO_FETCH; page++) {
-    console.log(`📥 Fetching TV shows from page ${page}...`);
+    console.log(`Fetching TV shows from page ${page}...`);
     const response = await fetch(`${TV_URL}&page=${page}`);
     const data = await response.json();
 
@@ -102,15 +102,15 @@ const fetchTvShows = async (genreMap) => {
 
 // Main function to generate the database JSON file
 const generateDbJson = async () => {
-  console.log("⏳ Fetching genre lists...");
+  console.log(" Fetching genre lists...");
   
   const movieGenreMap = await fetchGenres(MOVIE_GENRE_URL);
   const tvGenreMap = await fetchGenres(TV_GENRE_URL);
 
-  console.log("✅ Movie Genres:", movieGenreMap);
-  console.log("✅ TV Show Genres:", tvGenreMap);
+  console.log("Movie Genres:", movieGenreMap);
+  console.log("TV Show Genres:", tvGenreMap);
 
-  console.log("⏳ Fetching movies and TV shows...");
+  console.log("Fetching movies and TV shows...");
   
   const movies = await fetchMovies(movieGenreMap);
   const tvShows = await fetchTvShows(tvGenreMap);
@@ -119,7 +119,7 @@ const generateDbJson = async () => {
 
   fs.writeFileSync('db.json', JSON.stringify(db, null, 2));
   
-  console.log(`✅ db.json file has been generated with ${movies.length} movies and ${tvShows.length} TV shows.`);
+  console.log(`db.json file has been generated with ${movies.length} movies and ${tvShows.length} TV shows.`);
 };
 
 generateDbJson();
