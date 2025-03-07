@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import { Switch } from "@mui/material";
 import { ThemeContext } from "../context/ThemeContext";
-import { AppBar, Toolbar, Typography, Box, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 
 const Header = () => {
     const { darkMode, toggleTheme } = useContext(ThemeContext);
