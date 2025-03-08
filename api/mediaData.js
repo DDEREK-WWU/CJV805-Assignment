@@ -9,7 +9,7 @@ class MediaData {
         const tvShowData = require("./db.json").tvShows;
 
         return new Promise((resolve) => {
-            // ✅ Force `id` to always be a string
+            // Force `id` to always be a string
             this.movies = movieData.map(movie => ({
                 ...movie,
                 id: String(movie.id) // Convert ID to string
