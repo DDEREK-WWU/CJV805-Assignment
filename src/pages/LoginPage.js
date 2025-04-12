@@ -1,30 +1,67 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
 import { TextField, Button, Card, CardContent, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import Header from "../components/header";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
 
+  // Dynamically set API URL
+  const API_BASE_URL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:8080/auth"
+      : "https://cjv805-backend.onrender.com/auth"; //
 
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-    });
-    const updateField = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-        };
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const updateField = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`${API_BASE_URL}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
 
-      };
-    
 
-    return(
-      <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+
+      if (response.ok) {
+        const data = await response.json(); // Expecting full user object
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userId", data.id);
+        localStorage.setItem("userEmail", data.email); // Optional
+
+        // Redirect to dashboard
+        navigate("/dashboard");
+      } else {
+        const errorMessage = await response.text();
+        alert("Login failed: " + errorMessage);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("Network error. Please try again.");
+    }
+  };
+
+
+
+  return (
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <Header />
 
       <Box sx={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -36,12 +73,12 @@ const LoginPage = () => {
 
 
             <form onSubmit={handleSubmit}>
-               <TextField
+              <TextField
                 label="Email"
                 name="email"
                 type="email"
                 value={formData.email}
-                onChange = {updateField}
+                onChange={updateField}
                 fullWidth
                 margin="normal"
               />
@@ -50,15 +87,15 @@ const LoginPage = () => {
                 name="password"
                 type="password"
                 value={formData.password}
-                onChange = {updateField}
+                onChange={updateField}
                 fullWidth
                 margin="normal"
               />
-              
+
               <Button variant="contained" color="primary" type="submit" fullWidth sx={{ mt: 2 }}>
-                Register
+                Login
               </Button>
-              <Button variant="contained" color="primary" component = {Link} to = "/Signup" fullWidth sx={{ mt: 2 }}>
+              <Button variant="contained" color="primary" component={Link} to="/Signup" fullWidth sx={{ mt: 2 }}>
                 Create a New Account
               </Button>
             </form>

@@ -30,7 +30,7 @@ const FeaturedMedia = () => {
                    <Grid2 item key={media.id} xs={3}>
                      <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                        <Card sx={{maxWidth: 240, margin: "auto", transition: "0.3s", "&:hover": { transform: "scale(1.05)" } }}>
-                         <CardMedia component="img" height="350" image={media.poster} alt={media.title} />
+                         <CardMedia component="img" height="350" image={media.smallPoster} alt={media.title} />
                          <CardContent>
                            <Typography variant="caption" align="center">{media.title}</Typography>
                          </CardContent>
@@ -45,7 +45,7 @@ const FeaturedMedia = () => {
                    <Grid2 item key={media.id} xs={3}>
                      <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                        <Card sx={{maxWidth: 240, margin: "auto", transition: "0.3s", "&:hover": { transform: "scale(1.05)" } }}>
-                         <CardMedia component="img" height="350" image={media.poster} alt={media.title} />
+                         <CardMedia component="img" height="350" image={media.smallPoster} alt={media.title} />
                          <CardContent>
                            <Typography variant="caption" align="center">{media.title}</Typography>
                          </CardContent>

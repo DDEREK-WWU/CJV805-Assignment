@@ -5,8 +5,8 @@ export const MediaContext = createContext();
 // Dynamically set API URL
 const API_BASE_URL =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:3001/api"
-    : "https://cjv-805-assignment.vercel.app/api"; //
+    ? "http://localhost:8080/api"
+    : "https://cjv805-backend.onrender.com/api"; //
 
 const MediaProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
@@ -14,8 +14,8 @@ const MediaProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log("📡 Fetching movies from:", `${API_BASE_URL}/movies`);
-    fetch(`${API_BASE_URL}/movies`)
+    console.log("📡 Fetching movies from:", `${API_BASE_URL}/media/movies`);
+    fetch(`${API_BASE_URL}/media/movies`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -31,8 +31,8 @@ const MediaProvider = ({ children }) => {
         setError(error.message);
       });
 
-    console.log("Fetching TV Shows from:", `${API_BASE_URL}/tvshows`);
-    fetch(`${API_BASE_URL}/tvshows`)
+    console.log("Fetching TV Shows from:", `${API_BASE_URL}/media/tv`);
+    fetch(`${API_BASE_URL}/media/tv`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

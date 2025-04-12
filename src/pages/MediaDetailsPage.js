@@ -29,7 +29,7 @@ const MediaDetailsPage = () => {
             position: "relative",
             width: "100%",
             minHeight: "100vh", // Ensures the image covers the full viewport height
-            backgroundImage: `url(${media.banner})`,
+            backgroundImage: `url(${media.largePoster})`, // Large poster image
             backgroundSize: "cover", // Ensures the image scales properly
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat", // Prevents image repetition
@@ -62,7 +62,7 @@ const MediaDetailsPage = () => {
               variant="h6" 
               sx={{ opacity: 0.9, fontSize: { xs: "0.9rem", md: "1.1rem" } }}
             >
-              {media.genre} | {media.year}
+              {media.genre}
             </Typography>
 
             {/* Small Poster & Description */}
@@ -79,7 +79,7 @@ const MediaDetailsPage = () => {
               <Card sx={{ maxWidth: 180, backgroundColor: "transparent", boxShadow: "none" }}>
                 <CardMedia 
                   component="img" 
-                  image={media.poster} 
+                  image={media.smallPoster} 
                   alt={media.title}
                   sx={{ width: "100%", borderRadius: "5px" }}
                 />
@@ -111,14 +111,14 @@ const MediaDetailsPage = () => {
                 color="primary"
                 sx={{ fontSize: { xs: "0.8rem", md: "1rem" }, px: { xs: 2, md: 3 }, py: { xs: 1, md: 1.5 } }}
               >
-                Rent Now: {media.rent}
+                Rent Now: {media.rentPrice}
               </Button>
               <Button 
                 variant="contained" 
                 color="secondary"
                 sx={{ fontSize: { xs: "0.8rem", md: "1rem" }, px: { xs: 2, md: 3 }, py: { xs: 1, md: 1.5 } }}
               >
-                Buy Now: {media.buy}
+                Buy Now: {media.purchasePrice}
               </Button>
             </Box>
           </Box>

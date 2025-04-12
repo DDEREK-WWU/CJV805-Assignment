@@ -12,11 +12,17 @@ import 'swiper/css/navigation';
 const HeroSection = () => {
   const { movies = [], tvShows = [] } = useContext(MediaContext);
 
-  const topMovies = movies.sort((a, b) => b.rating - a.rating).slice(0, 5);
-  const topTvShows = tvShows.sort((a, b) => b.rating - a.rating).slice(0, 5);
+  const getRandomMedia = (arr, count) => {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  }
+  const topMovies = getRandomMedia(movies, 5);
+  const topTvShows = getRandomMedia(tvShows, 5);
 
   const topMedia = [...topMovies, ...topTvShows];
-
+if (topMovies.length + topTvShows.length < 2){
+  return null;
+}
   return (
     <div className="hero-section">
       <Swiper
@@ -32,13 +38,13 @@ const HeroSection = () => {
           <SwiperSlide key={media.id}>
             <Link to={`/media/${media.id}`} style={{ textDecoration: "none", color: "inherit" }}>
               <img 
-                src={media.banner} 
+                src={media.largePoster} 
                 alt={media.title} 
                 className="hero-image" 
               />
               <div className="slide-info">
                 <h2>{media.title}</h2>
-                <p>Genre: {media.genre} | Year: {media.year} | Rating: {media.rating}</p>
+                <p>Genre: {media.genre}</p>
               </div>
             </Link>
           </SwiperSlide>

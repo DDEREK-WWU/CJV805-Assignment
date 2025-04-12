@@ -115,9 +115,27 @@ const generateDbJson = async () => {
   const movies = await fetchMovies(movieGenreMap);
   const tvShows = await fetchTvShows(tvGenreMap);
 
-  const db = { movies, tvShows };
+// Helper to rename keys to match Media model
+const transformToMedia = (item, type) => ({
+  id: item.id.toString(),
+  title: item.title,
+  synopsis: item.overview,
+  genre: item.genre,
+  type: type,
+  smallPoster: item.poster,
+  largePoster: item.banner,
+  rentPrice: item.rent,
+  purchasePrice: item.buy,
+  featured: Math.random() < 0.25 // 25% chance to be featured
+});
 
-  fs.writeFileSync('db.json', JSON.stringify(db, null, 2));
+const allMedia = [
+  ...movies.map(m => transformToMedia(m, "movie")),
+  ...tvShows.map(t => transformToMedia(t, "tv"))
+];
+
+fs.writeFileSync('media.json', JSON.stringify(allMedia, null, 2));
+console.log(`media.json created with ${allMedia.length} entries`);
   
   console.log(`db.json file has been generated with ${movies.length} movies and ${tvShows.length} TV shows.`);
 };
