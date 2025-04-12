@@ -92,7 +92,7 @@ const MediaDetailsPage = () => {
                   maxWidth: "400px" 
                 }}
               >
-                {media.overview}
+                {media.synopsis}
               </Typography>
             </Box>
 
